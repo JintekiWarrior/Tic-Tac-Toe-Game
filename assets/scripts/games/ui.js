@@ -68,7 +68,6 @@ const gameUpdateSuccess = function (res) {
   }
 
   if (store.game.over === true) {
-
     // adds a play again button to bring back the board
     $('#play-again').html('<button class="btn btn-primary">Play Again?</button>').on('click', function () {
       // empties the board of all text
