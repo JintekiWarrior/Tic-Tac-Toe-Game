@@ -6,6 +6,8 @@ const store = require('./../store.js')
 const createGameSuccess = function (res) {
   // Dsiplays the game board
   $('#game-board').css('display', 'initial')
+  // stores the game state along with the user
+  store.game = res.game
 }
 // send a message if the create game fails
 const createGameFailure = function (err) {
@@ -13,17 +15,12 @@ const createGameFailure = function (err) {
 }
 
 const gameUpdateSuccess = function (res) {
-  let gameState = res.game
-  console.log(gameState)
-}
-
-const gameUpdateFailure = function (err) {
-  $('#auth-message').text('error with starting game ' + err.status)
+  store.game = res.game
+  console.log(store)
 }
 
 module.exports = {
   createGameSuccess,
   createGameFailure,
-  gameUpdateSuccess,
-  gameUpdateFailure
+  gameUpdateSuccess
 }

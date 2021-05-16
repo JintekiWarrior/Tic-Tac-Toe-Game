@@ -7,6 +7,17 @@ const createGame = function (data) {
   return $.ajax({
     method: 'POST',
     url: config.apiUrl + '/games',
+    data: {},
+    headers: {
+      Authorization: `Bearer ${store.user.token}`
+    }
+  })
+}
+
+const updateGame = function (id, data) {
+  return $.ajax({
+    method: 'PATCH',
+    url: config.apiUrl + '/games/' + id,
     data,
     headers: {
       Authorization: `Bearer ${store.user.token}`
@@ -14,16 +25,6 @@ const createGame = function (data) {
   })
 }
 
-const updateGame = function (gameId, data) {
-  return $.ajax({
-    url: config.apiUrl + '/games/' + gameId,
-    method: 'PATCH',
-    data,
-    headers: {
-      Authorization: `Bearer ${store.user.token}`
-    },
-  })
-}
 
 module.exports = {
   createGame,
