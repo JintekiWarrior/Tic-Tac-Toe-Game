@@ -14,37 +14,40 @@ const onCreateGame = function (event) {
     .then(ui.createGameSuccess)
     .catch(ui.createGameFailure)
 }
-
+let gamePiece = 'X'
 const onUpdateGame = function (event) {
   event.preventDefault()
+  const currentBox = $(event.target)
+
+  if (currentBox.text() === '') {
+    currentBox.text(gamePiece)
+    gamePiece = gamePiece === 'O' ? 'X' : 'O'
+  } else {
+    $('#auth-message').text('Youve already clicked here')
+  }
+
+  // $(event.target).html(`<p>${gamePiece}</p>`)
 
   // $(event.target).html(`<p>${gamePiece}<p>`)
-
-  // const gameData = store.game
-
-  // const pieceSwap = function (piece) {
-  //   if (piece === 'X') {
-  //     piece = 'O'
-  //   } else {
-  //     piece = 'X'
-  //   }
-  // }
-
+  // this defines what space was clicked on the board.
   const boxNumber = $(event.target).data('index')
-  const gamePiece = 'X'
-  const gameId = store.game._id
+  // this is the gamePiece we will add to the array. Suuposed to start at X.
 
+  // this is getting the gameId which we stored earlier
+  const gameId = store.game._id
+  // this is storing the data which we will use to communicate with the api.
   const data = {
     game: {
       cell: {
         index: boxNumber,
-        value: gamePiece
+        value: currentBox.text()
       },
       over: false
     }
   }
 
-  store.games = data
+  // this is putting that data into the storage under a new object of gameIndex.
+  store.gameIndex = data
 
   api.updateGame(gameId, data)
     .then(ui.gameUpdateSuccess)

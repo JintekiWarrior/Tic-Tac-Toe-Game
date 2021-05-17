@@ -25,7 +25,6 @@ const updateGame = function (id, data) {
   })
 }
 
-
 module.exports = {
   createGame,
   updateGame

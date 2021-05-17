@@ -17,6 +17,22 @@ const createGameFailure = function (err) {
 const gameUpdateSuccess = function (res) {
   store.game = res.game
   console.log(store)
+  console.log(store.game.cells)
+
+  const playerMove = store.game.cells
+
+  if (playerMove[0] === playerMove[1] && playerMove[1] === playerMove[2]) {
+    store.game.over = true
+  }
+
+  const winCheck = store.game.over
+  console.log(winCheck)
+  console.log(playerMove)
+
+  if (winCheck === true) {
+    store.game = null
+    store.gameIndex = null
+  }
 }
 
 module.exports = {
