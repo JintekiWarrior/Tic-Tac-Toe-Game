@@ -1,1 +1,26 @@
 @import '~bootstrap/scss/bootstrap';
+
+.container {
+  height: 100vh;
+
+}
+.box {
+  align-items: center;
+  background-color: lightgray;
+  border: 2px solid red;
+  height: 100px;
+  display: flex;
+}
+
+
+#game-board {
+  display: none;
+}
+
+.gamePiece {
+  text-align: center;
+  position: absolute;
+  left: 75px;
+  font-size: 45px;
+  color: blue;
+}

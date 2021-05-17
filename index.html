@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Tic-Tac-Toe</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -12,6 +12,54 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+      <h1>Tic Tac Toe Lets Go!</h1>
+
+      <!-- sign up and sign in section-->
+      <div id="before-sign-in">
+      <!-- Message to the user after successfuly verifying authentication info -->
+        <p id="auth-message"><p>
+        <!-- Sign up form  -->
+        <form id="sign-up">
+          <input required name="credentials[email]" type="email" placeholder="Email"/>
+          <input required name="credentials[password]" type="password" placeholder="password"/>
+          <input required name="credentials[password_confirmation]" type="password" placeholder="password confirmation"/>
+          <button type="submit">Sign Up</button>
+        </form>
+        <!-- Sign in form -->
+        <form id="sign-in">
+          <input required name="credentials[email]" type="email" placeholder="Email"/>
+          <input required name="credentials[password]" type="password" placeholder="password"/>
+          <button type="submit">Sign In</button>
+        </form>
+      </div>
+
+      <!-- After sign in section -->
+      <div id="after-sign-in">
+
+        <!-- Start a new game button -->
+        <button id="start-new-game">New Game</button>
+        <!-- Sign out button -->
+        <button id="sign-out">Sign Out</button>
+
+        <!-- Game Board -->
+        <div id="game-board" class="container">
+          <div class="row">
+            <div class="box col-4" data-index='0'></div>
+            <div class="box col-4" data-index='1'></div>
+            <div class="box col-4" data-index='2'></div>
+            <div class="box col-4" data-index='3'></div>
+            <div class="box col-4" data-index='4'></div>
+            <div class="box col-4" data-index='5'></div>
+            <div class="box col-4" data-index='6'></div>
+            <div class="box col-4" data-index='7'></div>
+            <div class="box col-4" data-index='8'></div>
+          </div>
+        </div>
+
+        <!-- Sends message about game state to the user -->
+        <p id="game-message"></p>
+        <div id='play-again'></div>
+
+      </div>
     </body>
 </html>
