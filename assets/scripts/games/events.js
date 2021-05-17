@@ -14,6 +14,7 @@ const onCreateGame = function (event) {
     .then(ui.createGameSuccess)
     .catch(ui.createGameFailure)
 }
+
 let gamePiece = 'X'
 const onUpdateGame = function (event) {
   event.preventDefault()
@@ -26,9 +27,6 @@ const onUpdateGame = function (event) {
     $('#auth-message').text('Youve already clicked here')
   }
 
-  // $(event.target).html(`<p>${gamePiece}</p>`)
-
-  // $(event.target).html(`<p>${gamePiece}<p>`)
   // this defines what space was clicked on the board.
   const boxNumber = $(event.target).data('index')
   // this is the gamePiece we will add to the array. Suuposed to start at X.

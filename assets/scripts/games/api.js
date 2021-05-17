@@ -25,6 +25,16 @@ const updateGame = function (id, data) {
   })
 }
 
+// const deleteGame = function (id) {
+//   return $.ajax({
+//     method: 'DELETE',
+//     url: config.apiUrl + '/games/' + id,
+//     headers: {
+//       Authorization: `Bearer ${store.user.token}`
+//     }
+//   })
+// }
+
 module.exports = {
   createGame,
   updateGame
