@@ -27,11 +27,12 @@ const onUpdateGame = function (event) {
     currentBox.html(`<p id="gamePiece">${gamePiece}</p>`)
     // if the gamePiece is equal to O it will become X. Else it will remain O.
     gamePiece = gamePiece === 'O' ? 'X' : 'O'
-    // Message to let the player know which piece they are.
-    $('#player-game-piece').html(`<p class='game-piece-text'>You are ${gamePiece}</p>`).show()
   } else {
     $('#auth-message').text('Youve already clicked here')
   }
+
+  // Message to let the player know which piece they are.
+  $('#player-game-piece').text(`You are ${gamePiece}`).show()
 
   // this defines what space was clicked on the board.
   const boxNumber = $(event.target).data('index')
@@ -39,6 +40,7 @@ const onUpdateGame = function (event) {
   const gameId = store.game._id
   // this will store the current boxes text in a variable to be sent as data
   const currentMove = currentBox.text()
+  // storing the index and and current value
 
   api.updateGame(gameId, boxNumber, currentMove)
     .then(ui.gameUpdateSuccess)

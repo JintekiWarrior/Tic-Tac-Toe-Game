@@ -15,6 +15,7 @@ const createGame = function (data) {
 }
 
 const updateGame = function (id, boxNumber, currentMove) {
+  store.gameValue = currentMove
   return $.ajax({
     method: 'PATCH',
     url: config.apiUrl + '/games/' + id,
@@ -32,16 +33,6 @@ const updateGame = function (id, boxNumber, currentMove) {
     }
   })
 }
-
-// const deleteGame = function (id) {
-//   return $.ajax({
-//     method: 'DELETE',
-//     url: config.apiUrl + '/games/' + id,
-//     headers: {
-//       Authorization: `Bearer ${store.user.token}`
-//     }
-//   })
-// }
 
 module.exports = {
   createGame,

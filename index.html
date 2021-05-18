@@ -40,9 +40,15 @@
           <button id="start-new-game" class="btn btn-primary game-button">New Game</button>
           <!-- Sign out button -->
           <button id="sign-out" class="btn btn-primary game-button">Sign Out</button>
-          <!-- Lets the player know whos turn it is -->
-          <div id="player-game-piece"></div>
+          <!-- button will be added to allow the player to play again -->
+          <button id='play-again' class="btn btn-primary game-button">Play Again?</button>
         </div>
+
+        <!-- Lets the player know whos turn it is -->
+        <div id="player-game-piece">
+          <p class='game-piece-text'></p>
+        </div>
+
 
         <!-- Game Board -->
         <div id="game-board" class="container">
@@ -61,7 +67,6 @@
 
         <!-- Sends message about game state to the user -->
         <p id="game-message"></p>
-        <div id='play-again'></div>
 
       </div>
     </body>
