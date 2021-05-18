@@ -33,7 +33,6 @@ $(() => {
   //     $(boxNumber).html(`<h2 class="gamePiece">${gamePiece}</h2>`)
   //   })
   // }
-  if ($('.box').is(':empty')) {
-    $('#game-board').on('click', gameEvents.onUpdateGame)
-  }
+  // if ($('.box').is(':empty')) {
+  $('#game-board').on('click', gameEvents.onUpdateGame)
 })
