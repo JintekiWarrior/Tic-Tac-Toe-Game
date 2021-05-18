@@ -6,7 +6,7 @@ const api = require('./api.js')
 // Effects what happens when the onCreateGame function runs.
 const createGameSuccess = function (res) {
   // Dsiplays the game board
-  $('#game-board').css('display', 'initial')
+  $('.board').show()
   // stores the game state along with the user
   store.game = res.game
 }
@@ -67,11 +67,11 @@ const gameUpdateSuccess = function (res) {
     // empties the board of all text
     $('.box').text('')
     // hides the board so the player cannot make anymore moves
-    $('#game-board').css('display', 'none')
+    // $('#game-board').css('display', 'none')
     // adds a play again button to bring back the board
     $('#play-again').html('<button>Play Again?</button>').on('click', function () {
       // brings back the board.
-      $('#game-board').css('display', 'initial')
+      // $('#game-board').css('display', 'initial')
       api.createGame()
         .then(createGameSuccess)
         .catch(createGameFailure)

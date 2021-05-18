@@ -34,5 +34,5 @@ $(() => {
   //   })
   // }
   // if ($('.box').is(':empty')) {
-  $('#game-board').on('click', gameEvents.onUpdateGame)
+  $('.box').on('click', gameEvents.onUpdateGame)
 })

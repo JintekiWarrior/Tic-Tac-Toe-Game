@@ -28,10 +28,8 @@ const signInSuccess = function (res) {
 
   // message to greet user after sign in
   $('#auth-message').text('Welcome back, ' + res.user.email)
-
-  // Display the after sign in section
-  $('#after-sign-in').show()
-  // Hide the before sign in section
+  $('#sign-out').show()
+  $('#start-new-game').show()
   $('#before-sign-in').hide()
 }
 
@@ -45,11 +43,10 @@ const signOutSuccess = function () {
   // Clear out the user in the store
   store.user = null
   $('#auth-message').text('Sign out successful, See ya!')
-
-  // Display the before sign in section
+  $('#sign-out').hide()
+  $('#start-new-game').hide()
   $('#before-sign-in').show()
-  // Hide the after sign in section
-  $('#after-sign-in').hide()
+  $('.board').hide()
 }
 
 // explain what will happen if user sign out failed.

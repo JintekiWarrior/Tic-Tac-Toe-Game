@@ -25,7 +25,7 @@ const onUpdateGame = function (event) {
   // Asks if the box clicked has text or not
   if (currentBox.text() === '') {
     // if the box doesn't have text it will add the game piece in defined above
-    currentBox.text(gamePiece)
+    currentBox.html(`<p id="gamePiece">${gamePiece}</p>`)
     // if the gamePiece is equal to O it will become X. Else it will remain O.
     gamePiece = gamePiece === 'O' ? 'X' : 'O'
   } else {
