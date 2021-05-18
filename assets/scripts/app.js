@@ -26,13 +26,5 @@ $(() => {
   $('#start-new-game').on('click', gameEvents.onCreateGame)
 
   // Event listener for when the board game boxes are clicked.
-  // let gamePiece = 'X'
-  // if ($('.box').is(':empty')) {
-  //   $('.box').on('click', function () {
-  //     const boxNumber = $(this).html('data-index')
-  //     $(boxNumber).html(`<h2 class="gamePiece">${gamePiece}</h2>`)
-  //   })
-  // }
-  // if ($('.box').is(':empty')) {
   $('.box').on('click', gameEvents.onUpdateGame)
 })

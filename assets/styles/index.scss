@@ -1,5 +1,10 @@
 @import '~bootstrap/scss/bootstrap';
 
+.game-title {
+  text-align: center;
+  font-size: 80px;
+}
+
 .container {
   height: 100vh;
 
@@ -14,10 +19,7 @@
 
   background-color: orange;
 }
-.game-title {
-  text-align: center;
-  font-size: 80px;
-}
+
 .box {
   align-items: center;
   border-right: 15px solid red;
@@ -44,5 +46,33 @@
 
 #gamePiece {
   font-size: 80px;
-  color: Red;
+  color: red;
+}
+
+.before-sign-buttons {
+  background-color: red;
+
+  &:hover {
+    background-color: maroon;
+  }
+}
+
+.during-game-buttons {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.game-button {
+  margin: 5px;
+  background-color: red;
+
+  &:hover {
+    background-color: maroon;
+  }
+}
+
+.game-piece-text {
+  font-size: 50px;
+  text-align: center;
 }

@@ -21,13 +21,14 @@ const onUpdateGame = function (event) {
 
   // Variable which I will use later to determine the box that is clicked.
   const currentBox = $(event.target)
-
   // Asks if the box clicked has text or not
   if (currentBox.text() === '') {
     // if the box doesn't have text it will add the game piece in defined above
     currentBox.html(`<p id="gamePiece">${gamePiece}</p>`)
     // if the gamePiece is equal to O it will become X. Else it will remain O.
     gamePiece = gamePiece === 'O' ? 'X' : 'O'
+    // Message to let the player know which piece they are.
+    $('#player-game-piece').html(`<p class='game-piece-text'>You are ${gamePiece}</p>`).show()
   } else {
     $('#auth-message').text('Youve already clicked here')
   }

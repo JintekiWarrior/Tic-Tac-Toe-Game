@@ -6,7 +6,7 @@ const api = require('./api.js')
 // Effects what happens when the onCreateGame function runs.
 const createGameSuccess = function (res) {
   // Dsiplays the game board
-  $('.board').show()
+  $('.board').show(500)
   // stores the game state along with the user
   store.game = res.game
 }
@@ -62,14 +62,17 @@ const gameUpdateSuccess = function (res) {
       store.game.over = true
     }
   }
+  // Checks if there is a tie
+  if (playerMove.every(item => item !== '') === true) {
+    store.game.over = true
+  }
 
   if (store.game.over === true) {
-    // empties the board of all text
-    $('.box').text('')
-    // hides the board so the player cannot make anymore moves
-    // $('#game-board').css('display', 'none')
+
     // adds a play again button to bring back the board
-    $('#play-again').html('<button>Play Again?</button>').on('click', function () {
+    $('#play-again').html('<button class="btn btn-primary">Play Again?</button>').on('click', function () {
+      // empties the board of all text
+      $('.box').text('')
       // brings back the board.
       // $('#game-board').css('display', 'initial')
       api.createGame()
