@@ -14,13 +14,21 @@ const createGame = function (data) {
   })
 }
 
-const updateGame = function (id, data) {
+const updateGame = function (id, boxNumber, currentMove) {
   return $.ajax({
     method: 'PATCH',
     url: config.apiUrl + '/games/' + id,
-    data,
     headers: {
       Authorization: `Bearer ${store.user.token}`
+    },
+    data: {
+      game: {
+        cell: {
+          index: boxNumber,
+          value: currentMove
+        },
+        over: false
+      }
     }
   })
 }

@@ -4,6 +4,11 @@ const getFormFields = require('./../../../lib/get-form-fields.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
 
+$('#sign-out').hide()
+$('#start-new-game').hide()
+$('.board').hide()
+$('#player-game-piece').hide()
+
 // Event Handler which allows the user to sign up.
 const onSignUp = function (event) {
   event.preventDefault()

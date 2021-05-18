@@ -12,7 +12,7 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Tic Tac Toe Lets Go!</h1>
+      <h1 class="game-title">Tic Tac Toe Lets Go!</h1>
 
       <!-- sign up and sign in section-->
       <div id="before-sign-in">
@@ -23,27 +23,30 @@
           <input required name="credentials[email]" type="email" placeholder="Email"/>
           <input required name="credentials[password]" type="password" placeholder="password"/>
           <input required name="credentials[password_confirmation]" type="password" placeholder="password confirmation"/>
-          <button type="submit">Sign Up</button>
+          <button type="submit" class="btn btn-primary before-sign-buttons">Sign Up</button>
         </form>
         <!-- Sign in form -->
         <form id="sign-in">
           <input required name="credentials[email]" type="email" placeholder="Email"/>
           <input required name="credentials[password]" type="password" placeholder="password"/>
-          <button type="submit">Sign In</button>
+          <button type="submit" class="btn btn-primary before-sign-buttons">Sign In</button>
         </form>
       </div>
 
       <!-- After sign in section -->
       <div id="after-sign-in">
-
-        <!-- Start a new game button -->
-        <button id="start-new-game">New Game</button>
-        <!-- Sign out button -->
-        <button id="sign-out">Sign Out</button>
+        <div class="during-game-buttons">
+          <!-- Start a new game button -->
+          <button id="start-new-game" class="btn btn-primary game-button">New Game</button>
+          <!-- Sign out button -->
+          <button id="sign-out" class="btn btn-primary game-button">Sign Out</button>
+          <!-- Lets the player know whos turn it is -->
+          <div id="player-game-piece"></div>
+        </div>
 
         <!-- Game Board -->
         <div id="game-board" class="container">
-          <div class="row">
+          <div class="row board">
             <div class="box col-4" data-index='0'></div>
             <div class="box col-4" data-index='1'></div>
             <div class="box col-4" data-index='2'></div>

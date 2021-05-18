@@ -1,11 +1,12 @@
 'use strict'
 
 const store = require('./../store.js')
+const api = require('./api.js')
 
 // Effects what happens when the onCreateGame function runs.
 const createGameSuccess = function (res) {
   // Dsiplays the game board
-  $('#game-board').css('display', 'initial')
+  $('.board').show(500)
   // stores the game state along with the user
   store.game = res.game
 }
@@ -16,61 +17,67 @@ const createGameFailure = function (err) {
 
 const gameUpdateSuccess = function (res) {
   // will store the game response in the storage object.
-  store.game = res.game
   console.log(store)
+  store.game = res.game
 
   const playerMove = store.game.cells
-  let gameOver = store.game.over
   // check if any of the moves made is a winning move.
-  // These check if the player won horizontally
-
   if (playerMove[0] !== '' && playerMove[1] !== '' && playerMove[2] !== '') {
     if (playerMove[0] === playerMove[1] && playerMove[1] === playerMove[2]) {
-      gameOver = true
+      store.game.over = true
     }
   }
   if (playerMove[3] !== '' && playerMove[4] !== '' && playerMove[5] !== '') {
     if (playerMove[3] === playerMove[4] && playerMove[4] === playerMove[5]) {
-      gameOver = true
+      store.game.over = true
     }
   }
   if (playerMove[6] !== '' && playerMove[7] !== '' && playerMove[8] !== '') {
     if (playerMove[6] === playerMove[7] && playerMove[7] === playerMove[8]) {
-      gameOver = true
+      store.game.over = true
     }
   }
   if (playerMove[0] !== '' && playerMove[3] !== '' && playerMove[6] !== '') {
     if (playerMove[0] === playerMove[3] && playerMove[3] === playerMove[6]) {
-      gameOver = true
+      store.game.over = true
     }
   }
   if (playerMove[1] !== '' && playerMove[4] !== '' && playerMove[7] !== '') {
     if (playerMove[1] === playerMove[4] && playerMove[4] === playerMove[7]) {
-      gameOver = true
+      store.game.over = true
     }
   }
   if (playerMove[2] !== '' && playerMove[5] !== '' && playerMove[8] !== '') {
     if (playerMove[2] === playerMove[5] && playerMove[5] === playerMove[8]) {
-      gameOver = true
+      store.game.over = true
     }
   }
   if (playerMove[0] !== '' && playerMove[4] !== '' && playerMove[8] !== '') {
     if (playerMove[0] === playerMove[4] && playerMove[4] === playerMove[8]) {
-      gameOver = true
+      store.game.over = true
     }
   }
   if (playerMove[2] !== '' && playerMove[4] !== '' && playerMove[6] !== '') {
     if (playerMove[2] === playerMove[4] && playerMove[4] === playerMove[6]) {
-      gameOver = true
+      store.game.over = true
     }
   }
+  // Checks if there is a tie
+  if (playerMove.every(item => item !== '') === true) {
+    store.game.over = true
+  }
 
-  if (gameOver === true) {
-    $('.box').text('')
-    $('#game-board').css('display', 'none')
-    $('#play-again').html('<button>Play Again?</button>').on('click', function () {
-      $('#game-board').css('display', 'initial')
-      store.gameIndex.game.cell.value = 'X'
+  if (store.game.over === true) {
+
+    // adds a play again button to bring back the board
+    $('#play-again').html('<button class="btn btn-primary">Play Again?</button>').on('click', function () {
+      // empties the board of all text
+      $('.box').text('')
+      // brings back the board.
+      // $('#game-board').css('display', 'initial')
+      api.createGame()
+        .then(createGameSuccess)
+        .catch(createGameFailure)
     })
   }
 }
