@@ -47,6 +47,7 @@ const signOutSuccess = function () {
   $('#start-new-game').hide()
   $('#before-sign-in').show()
   $('.board').hide()
+  $('#player-game-piece').hide()
 }
 
 // explain what will happen if user sign out failed.
