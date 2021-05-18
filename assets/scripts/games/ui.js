@@ -17,10 +17,11 @@ const createGameFailure = function (err) {
 
 const gameUpdateSuccess = function (res) {
   // will store the game response in the storage object.
-  console.log(store)
   store.game = res.game
-
+  // getting the current move of the game
+  const currentMove = store.gameValue
   const playerMove = store.game.cells
+
   // check if any of the moves made is a winning move.
   if (playerMove[0] !== '' && playerMove[1] !== '' && playerMove[2] !== '') {
     if (playerMove[0] === playerMove[1] && playerMove[1] === playerMove[2]) {
@@ -68,13 +69,16 @@ const gameUpdateSuccess = function (res) {
   }
 
   if (store.game.over === true) {
-
-    // adds a play again button to bring back the board
-    $('#play-again').html('<button class="btn btn-primary">Play Again?</button>').on('click', function () {
+    // play again button makes an appearance
+    $('#play-again').show()
+    // sends text declaring the winner
+    $('#player-game-piece').text(`${currentMove} is the winner`)
+    // adds a function to play again button to clear the board and restart the game
+    $('#play-again').on('click', function () {
       // empties the board of all text
       $('.box').text('')
-      // brings back the board.
-      // $('#game-board').css('display', 'initial')
+      $('#play-again').hide()
+
       api.createGame()
         .then(createGameSuccess)
         .catch(createGameFailure)
