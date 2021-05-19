@@ -9,7 +9,7 @@ const signUpSuccess = function (res) {
   $('#sign-up').trigger('reset')
 
   // message to greet user after sign up
-  $('#auth-message').text('Hello, ' + res.user.email)
+  // $('#auth-message').text('Hello, ' + res.user.email)
 }
 
 // explain what will happen if user had a sign up error
@@ -27,7 +27,7 @@ const signInSuccess = function (res) {
   console.log(store)
 
   // message to greet user after sign in
-  $('#auth-message').text('Welcome back, ' + res.user.email)
+  // $('#auth-message').text('Welcome back, ' + res.user.email)
   $('#sign-out').show()
   $('#start-new-game').show()
   $('#before-sign-in').hide()
@@ -42,7 +42,7 @@ const signInFailure = function (err) {
 const signOutSuccess = function () {
   // Clear out the user in the store
   store.user = null
-  $('#auth-message').text('Sign out successful, See ya!')
+  // $('#auth-message').text('Sign out successful, See ya!')
   $('#sign-out').hide()
   $('#start-new-game').hide()
   $('#before-sign-in').show()
