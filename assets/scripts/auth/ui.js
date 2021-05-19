@@ -42,12 +42,13 @@ const signInFailure = function (err) {
 const signOutSuccess = function () {
   // Clear out the user in the store
   store.user = null
-  // $('#auth-message').text('Sign out successful, See ya!')
+  $('#auth-message').text('Sign out successful, See ya!')
   $('#sign-out').hide()
   $('#start-new-game').hide()
   $('#before-sign-in').show()
   $('.board').hide()
   $('#player-game-piece').hide()
+  $('#play-again').hide()
 }
 
 // explain what will happen if user sign out failed.

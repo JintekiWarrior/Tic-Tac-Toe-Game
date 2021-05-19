@@ -82,7 +82,6 @@ const gameUpdateSuccess = function (res) {
     $('#play-again').on('click', function () {
       // empties the board of all text
       $('.box').text('')
-      $('#play-again').hide()
 
       api.createGame()
         .then(createGameSuccess)
