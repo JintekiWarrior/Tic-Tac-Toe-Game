@@ -43,7 +43,7 @@ const signOutSuccess = function () {
   // Clear out the user in the store
   store.user = null
   store.game = null
-  $('#auth-message').text('Sign out successful, See ya!')
+  // $('#auth-message').text('Sign out successful, See ya!')
   $('#sign-out').hide()
   $('#start-new-game').hide()
   $('#before-sign-in').show()
