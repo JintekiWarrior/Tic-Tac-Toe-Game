@@ -3,7 +3,7 @@
 const config = require('./../config.js')
 const store = require('./../store')
 
-const createGame = function (data) {
+const createGame = function (gamePiece) {
   return $.ajax({
     method: 'POST',
     url: config.apiUrl + '/games',
@@ -15,6 +15,7 @@ const createGame = function (data) {
 }
 
 const updateGame = function (id, boxNumber, currentMove) {
+  store.gameMove = currentMove
   return $.ajax({
     method: 'PATCH',
     url: config.apiUrl + '/games/' + id,
@@ -25,7 +26,7 @@ const updateGame = function (id, boxNumber, currentMove) {
       game: {
         cell: {
           index: boxNumber,
-          value: currentMove
+          value: store.gameMove
         },
         over: false
       }

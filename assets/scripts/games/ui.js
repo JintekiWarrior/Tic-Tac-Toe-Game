@@ -22,8 +22,15 @@ const createGameFailure = function (err) {
 const gameUpdateSuccess = function (res) {
   // will store the game response in the storage object.
   store.game = res.game
+  let gamePiece = store.gameMove
+  const gamePieceChange = function () {
+    gamePiece = gamePiece === 'O' ? 'X' : 'O'
+    store.gameMove = gamePiece
+  }
+
+
   // getting the current move of the game
-  const currentMove = store.gameValue
+  const currentMove = store.gameMove
   const playerMove = store.game.cells
 
   // check if any of the moves made is a winning move.
@@ -82,12 +89,14 @@ const gameUpdateSuccess = function (res) {
     $('#play-again').on('click', function () {
       // empties the board of all text
       $('.box').text('')
+      store.gameMove = undefined
 
       api.createGame()
         .then(createGameSuccess)
         .catch(createGameFailure)
     })
   }
+  gamePieceChange()
 }
 
 module.exports = {

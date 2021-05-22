@@ -15,33 +15,40 @@ const onCreateGame = function (event) {
     .catch(ui.createGameFailure)
 }
 
-let gamePiece = 'X'
 const onUpdateGame = function (event) {
   event.preventDefault()
-
   // Variable which I will use later to determine the box that is clicked.
   const currentBox = $(event.target)
-  // Asks if the box clicked has text or not
-  if (currentBox.text() === '') {
-    // if the box doesn't have text it will add the game piece in defined above
-    currentBox.html(`<p id="gamePiece">${gamePiece}</p>`)
-    // if the gamePiece is equal to O it will become X. Else it will remain O.
-    gamePiece = gamePiece === 'O' ? 'X' : 'O'
-  } else {
-    $('#auth-message').text('Youve already clicked here')
-  }
 
-  // Message to let the player know which piece they are.
-  $('#player-game-piece').text(`You are ${gamePiece}`).show()
+  // Takes the event and gets the data from the target being clicked on
+  const boxNumber = currentBox.data('index')
 
-  // this defines what space was clicked on the board.
-  const boxNumber = $(event.target).data('index')
   // this is getting the gameId which we stored earlier
   const gameId = store.game._id
-  // this will store the current boxes text in a variable to be sent as data
-  const currentMove = currentBox.text()
-  // storing the index and and current value
-  store.gameValue = currentMove
+  // creating a variable for what the game piece will be
+  let currentMove = null
+  // I want to change the current move from the ui but if a player logs in nothing
+  // is in the ui. Therefore this block of code will link the current move
+  // to the ui.
+  if (store.gameMove === undefined) {
+    currentMove = 'X'
+  } else {
+    currentMove = store.gameMove
+  }
+
+  if (currentBox.text() === '') {
+    currentBox.html(`<p id="gamePiece">${currentMove}</p>`)
+    $('#player-game-piece').text(`You are ${currentMove}`).show()
+  }
+
+  // Asks if the box clicked has text or not
+  // if (currentBox.text() === '') {
+  //   // if the gamePiece is equal to O it will become X. Else it will remain O.
+  //   gamePiece = gamePiece === 'X' ? 'O' : 'X'
+  //   currentBox.html(`<p id="gamePiece">${gamePiece}</p>`)
+  // }
+  // // Message to let the player know which piece they are.
+  // $('#player-game-piece').text(`You are ${gamePiece}`).show()
 
   api.updateGame(gameId, boxNumber, currentMove)
     .then(ui.gameUpdateSuccess)
