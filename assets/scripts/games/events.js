@@ -41,6 +41,7 @@ const onUpdateGame = function (event) {
   // this will store the current boxes text in a variable to be sent as data
   const currentMove = currentBox.text()
   // storing the index and and current value
+  store.gameValue = currentMove
 
   api.updateGame(gameId, boxNumber, currentMove)
     .then(ui.gameUpdateSuccess)

@@ -71,7 +71,7 @@ const gameUpdateSuccess = function (res) {
   if (playerMove.every(item => item !== '') === true) {
     store.game.over = true
   }
-
+  console.log(store)
   if (store.game.over === true) {
     // play again button makes an appearance
     $('#play-again').show()
