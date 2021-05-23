@@ -101,3 +101,17 @@ body {
   display: flex;
   justify-content: center;
 }
+
+#auth-message {
+  text-align: center;
+  color: $tan;
+  font-size: 20px;
+}
+
+#welcome {
+  text-align: center;
+  font-size: 20px;
+  color: $tan;
+  position: relative;
+  bottom: 90vh;
+}

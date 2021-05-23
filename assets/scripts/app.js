@@ -26,7 +26,5 @@ $(() => {
   $('#start-new-game').on('click', gameEvents.onCreateGame)
 
   // Event listener for when the board game boxes are clicked.
-
   $('.box').on('click', gameEvents.onUpdateGame)
-
 })

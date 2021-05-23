@@ -7,6 +7,10 @@ const store = require('./../store.js')
 const signUpSuccess = function (res) {
   // after the user signs up this will reset the input boxes.
   $('#sign-up').trigger('reset')
+  $('#auth-message').text('Thank you for signing up')
+  setTimeout(function () {
+    $('#auth-message').hide()
+  }, 3000)
 
   // message to greet user after sign up
   // $('#auth-message').text('Hello, ' + res.user.email)
@@ -22,12 +26,13 @@ const signUpFailure = function (err) {
 const signInSuccess = function (res) {
   // after the user signs in this will reset the input boxes.
   $('#sign-in').trigger('reset')
+  $('#welcome').text('Hello, click the new game button').show()
+  setTimeout(function () {
+    $('#welcome').hide()
+  }, 3000)
 
   store.user = res.user
-  console.log(store)
 
-  // message to greet user after sign in
-  // $('#auth-message').text('Welcome back, ' + res.user.email)
   $('#sign-out').show()
   $('#start-new-game').show()
   $('#before-sign-in').hide()
@@ -45,7 +50,7 @@ const signOutSuccess = function () {
   store.game = null
   store.gameMove = 'X'
   console.log(store.game)
-  // $('#auth-message').text('Sign out successful, See ya!')
+
   $('#sign-out').hide()
   $('#start-new-game').hide()
   $('#before-sign-in').show()
@@ -53,6 +58,10 @@ const signOutSuccess = function () {
   $('#player-game-piece').hide()
   $('#play-again').hide()
   $('.box').text('')
+  $('#auth-message').text('Sign out successful, See ya!')
+  setTimeout(function () {
+    $('#auth-message').hide()
+  }, 3000)
 }
 
 // explain what will happen if user sign out failed.
