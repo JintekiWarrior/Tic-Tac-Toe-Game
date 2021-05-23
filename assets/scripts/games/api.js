@@ -16,6 +16,7 @@ const createGame = function (gamePiece) {
 
 const updateGame = function (id, boxNumber, currentMove) {
   store.gameMove = currentMove
+  store.gameIndex = boxNumber
   return $.ajax({
     method: 'PATCH',
     url: config.apiUrl + '/games/' + id,

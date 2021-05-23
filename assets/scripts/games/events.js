@@ -30,6 +30,8 @@ const onUpdateGame = function (event) {
   // I want to change the current move from the ui but if a player logs in nothing
   // is in the ui. Therefore this block of code will link the current move
   // to the ui.
+  console.log(store.gameMove)
+
   if (store.gameMove === undefined) {
     currentMove = 'X'
   } else {
@@ -38,21 +40,13 @@ const onUpdateGame = function (event) {
 
   if (currentBox.text() === '') {
     currentBox.html(`<p id="gamePiece">${currentMove}</p>`)
-    $('#player-game-piece').text(`You are ${currentMove}`).show()
   }
 
-  // Asks if the box clicked has text or not
-  // if (currentBox.text() === '') {
-  //   // if the gamePiece is equal to O it will become X. Else it will remain O.
-  //   gamePiece = gamePiece === 'X' ? 'O' : 'X'
-  //   currentBox.html(`<p id="gamePiece">${gamePiece}</p>`)
-  // }
-  // // Message to let the player know which piece they are.
-  // $('#player-game-piece').text(`You are ${gamePiece}`).show()
-
-  api.updateGame(gameId, boxNumber, currentMove)
-    .then(ui.gameUpdateSuccess)
-    .catch()
+  if (store.game.cells[boxNumber] === '') {
+    api.updateGame(gameId, boxNumber, currentMove)
+      .then(ui.gameUpdateSuccess)
+      .catch()
+  }
 }
 
 module.exports = {
