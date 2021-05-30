@@ -30,7 +30,6 @@ const onUpdateGame = function (event) {
   // I want to change the current move from the ui but if a player logs in nothing
   // is in the ui. Therefore this block of code will link the current move
   // to the ui.
-  console.log(store.gameMove)
 
   if (store.gameMove === undefined) {
     currentMove = 'X'

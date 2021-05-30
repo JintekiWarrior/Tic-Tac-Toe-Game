@@ -18,7 +18,11 @@ const signUpSuccess = function (res) {
 
 // explain what will happen if user had a sign up error
 const signUpFailure = function (err) {
-  $('#auth-message').text('Failed to sign up ' + err.status)
+  $('#sign-up').trigger('reset')
+  $('#auth-message').text('Failed to sign up ' + err.status).show()
+  setTimeout(function () {
+    $('#auth-message').text('')
+  }, 3000)
 }
 
 // What will happen after the user signs in.
@@ -40,7 +44,11 @@ const signInSuccess = function (res) {
 
 // explain what will happen if user had a sign up error
 const signInFailure = function (err) {
+  $('#sign-in').trigger('reset')
   $('#auth-message').text('Failed to sign in ' + err.status)
+  setTimeout(function () {
+    $('#auth-message').text('')
+  }, 3000)
 }
 
 // What will happen after the user has signed out.
