@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Tic-Tac-Toe</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+      <link href="https://fonts.googleapis.com/css2?family=Reggae+One&display=swap" rel="stylesheet">
+    </head>
+    <body>
+      <h1 class="game-title">Tic Tac Toe</h1>
+
+      <!-- sign up and sign in section-->
+      <div id="before-sign-in">
+      <!-- Message to the user after successfuly verifying authentication info -->
+        <p id="auth-message"><p>
+        <div class="sign-form-container">
+          <div class="sign-up-cont">
+            <!-- Sign up form  -->
+            <form id="sign-up">
+              <input required name="credentials[email]" type="email" placeholder="Email"/>
+              <input required name="credentials[password]" type="password" placeholder="password"/>
+              <input required name="credentials[password_confirmation]" type="password" placeholder="password confirmation"/>
+              <button type="submit" class="btn btn-primary before-sign-buttons">Sign Up</button>
+            </form>
+          </div>
+          <div class="sign-in-cont">
+            <!-- Sign in form -->
+            <form id="sign-in">
+              <input required name="credentials[email]" type="email" placeholder="Email"/>
+              <input required name="credentials[password]" type="password" placeholder="password"/>
+              <button type="submit" class="btn btn-primary before-sign-buttons">Sign In</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- After sign in section -->
+      <div id="after-sign-in">
+        <div class="during-game-buttons">
+          <!-- Start a new game button -->
+          <button id="start-new-game" class="btn btn-primary game-button">New Game</button>
+          <!-- Sign out button -->
+          <button id="sign-out" class="btn btn-primary game-button">Sign Out</button>
+          <!-- button will be added to allow the player to play again -->
+          <button id='play-again' class="btn btn-primary game-button">Play Again?</button>
+        </div>
+
+        <!-- Lets the player know whos turn it is -->
+        <div id="player-game-piece">
+          <p class='game-piece-text'></p>
+        </div>
+
+
+
+        <!-- Game Board -->
+        <div id="game-board" class="container">
+          <div class="row board">
+            <div class="box col-4" data-index='0'></div>
+            <div class="box col-4" data-index='1'></div>
+            <div class="box col-4" data-index='2'></div>
+            <div class="box col-4" data-index='3'></div>
+            <div class="box col-4" data-index='4'></div>
+            <div class="box col-4" data-index='5'></div>
+            <div class="box col-4" data-index='6'></div>
+            <div class="box col-4" data-index='7'></div>
+            <div class="box col-4" data-index='8'></div>
+          </div>
+        </div>
+
+        <!-- Sends message about game state to the user -->
+        <div id="welcome">
+        </div>
+
+      </div>
+    </body>
+</html>
